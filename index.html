@@ -1,129 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-        }
-
-        nav {
-            background-color: #444;
-            color: #fff;
-            text-align: center;
-            padding: 0.5em 0;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0 1em;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        section {
-            padding: 2em;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .project {
-            border: 1px solid #ddd;
-            padding: 1em;
-            margin-bottom: 1em;
-            background-color: #fff;
-        }
-
-        .project img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 1em;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-            position:relative;
-            bottom:0;
-            width:100%;
-
-        }
-
-        .contact-info {
-            line-height: 1.6;
-        }
-
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Nareshkumar B S – Portfolio</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --accent: #ffe600;
+      --bg: #f0f8ff;
+      --white: #fff;
+      --text-dark: #22223b;
+      --text-light: #475569;
+      --border: #e0e7ef;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+    .main-container {
+      max-width: 900px;
+      margin: 34px auto 0 auto;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 6px 24px 0 rgba(30,58,138,0.10);
+      padding: 32px 24px 38px 24px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+    .photo-placeholder {
+      width: 124px;
+      height: 124px;
+      border-radius: 100px;
+      margin-right: 32px;
+      overflow: hidden;
+      border: 4px solid var(--accent);
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile-photo {
+      width: 124px;
+      height: 124px;
+      object-fit: cover;
+      border-radius: 100px;
+      display: block;
+      border: none;
+      box-shadow: 0 2px 14px #dbdbdb33;
+    }
+    .title-block {
+      flex: 1;
+    }
+    .name {
+      font-size: 2.4em;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .subtitle {
+      font-size: 1.0em;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 1em;
+      gap: 12px 32px;
+      color: var(--text-dark);
+    }
+    .contacts a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .section {
+      margin-top: 28px;
+    }
+    .section-title {
+      color: var(--primary);
+      background: var(--accent);
+      display: inline-block;
+      font-weight: 700;
+      border-radius: 5px 16px 8px 5px;
+      padding: 5px 20px 4px 10px;
+      margin-bottom: 10px;
+      font-size: 1.18em;
+      letter-spacing: 0.5px;
+    }
+    .content-list, .skills-list {
+      margin: 12px 0 0 7px;
+      padding: 0 0 0 11px;
+      list-style-type: disc;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px 18px;
+      list-style: none;
+      padding-left: 5px;
+      margin: 11px 0 0 0;
+      justify-content: flex-start;
+    }
+    .skill-pill {
+      background: var(--accent);
+      border-radius: 16px;
+      color: var(--primary);
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 0.99em;
+      font-weight: 500;
+      margin: 0 5px 8px 0;
+    }
+    .strengths {
+      margin-top: 7px;
+      color: var(--primary);
+      background: #f7fad8;
+      padding: 10px 18px;
+      border-radius: 7px;
+      font-size: 1em;
+      font-style: italic;
+      box-shadow: 0 1px 4px #ffe60044;
+    }
+    .timeline {
+      margin-top: 9px;
+      border-left: 2.5px solid var(--primary);
+      padding-left: 22px;
+    }
+    .timeline-entry {
+      margin-bottom: 19px;
+    }
+    .timeline-title {
+      font-weight: bold;
+      color: var(--primary);
+      font-size: 1.02em;
+      margin-bottom: 2px;
+    }
+    .timeline-period {
+      color: #555;
+      font-size: 0.99em;
+      margin-bottom: 2px;
+    }
+    .timeline-details {
+      color: var(--text-light);
+      font-size: 1em;
+    }
+    .badge {
+      background: var(--accent);
+      color: var(--primary);
+      border-radius: 5px 10px 10px 5px;
+      padding: 2.2px 10px;
+      margin-right: 6px;
+      font-weight: bold;
+      font-size: 0.95em;
+      vertical-align: 2px;
+    }
+    .achievements-list {
+      margin-top: 8px;
+      padding-left: 21px;
+    }
+    .personal-table {
+      width: 100%;
+      max-width: 430px;
+      margin-top: 10px;
+      font-size: 1em;
+      border-collapse: collapse;
+    }
+    .personal-table td {
+      padding: 5px 8px 3px 0;
+      color: #274b81;
+    }
+    .declaration {
+      margin-top: 32px;
+      font-size: 1em;
+      color: var(--text-light);
+      background: #f3f5fc;
+      border-left: 7px solid var(--primary);
+      padding: 12px 19px;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+    }
+    .popup-btn {
+      background: var(--primary);
+      color: var(--accent);
+      border: none;
+      border-radius: 6px;
+      padding: 12px 20px;
+      font-size: 1.07em;
+      font-weight: bold;
+      margin: 10px 16px 0 0;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 10px rgba(34, 56, 100, 0.07);
+    }
+    .popup-btn:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1003;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(37, 44, 54, 0.43);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: var(--white);
+      padding: 32px 24px;
+      border-radius: 12px;
+      box-shadow: 0 9px 30px rgba(0,0,0,0.13);
+      max-width: 370px;
+      width: 90%;
+      position: relative;
+      text-align: center;
+      animation: modalFade .22s;
+    }
+    @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+    .modal-content h3 { color: var(--primary); margin-bottom: 14px; }
+    .close { position: absolute; top: 17px; right: 22px; color: var(--primary); font-size: 1.7em; font-weight: bold; cursor: pointer; }
+    @media (max-width: 740px) {
+      .main-container { padding: 4vw 2vw 7vw 2vw; }
+      .header { flex-direction: column; align-items: flex-start; }
+      .photo-placeholder { margin-bottom: 16px; margin-right: 0; }
+      .contacts { gap: 5px 16px; font-size: 0.97em; }
+      .name { font-size: 1.34em; }
+      .subtitle { font-size: 0.97em; }
+    }
+    @media (max-width: 480px) {
+      .modal-content { padding: 16px 4vw; max-width: 97vw; font-size: 0.93em; }
+      .main-container { padding: 2vw; }
+    }
+  </style>
 </head>
 <body>
-
-    <header>
-        <h1>B.S.Naresh kumar</h1>
-        <p>Web Developer | Designer | student</p>
-    </header>
-
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a href="#resume">Resume</a>
-    </nav>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Hi, I'm B.S.Naresh kumar, an Artificial Intelligence student with a passion for web development. I have experience working as an NSS member, where I contributed to social service initiatives and community projects.  I have developed strong leadership skills.
-          This is my first web development project, and I am excited to showcase my skills and projects.
-        </p>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-
-        <div class="project">     
-            <h3>Project 1: Portfolio</h3>
-            <p></p>
-            
+  <div class="main-container">
+    <!-- Header with Photo and Contact -->
+    <div class="header">
+      <div class="photo-placeholder">
+        <img src="naresh.pdf" alt="Nareshkumar B S Photo" class="profile-photo">
+      </div>
+      <div class="title-block">
+        <div class="name">Nareshkumar B S</div>
+        <div class="subtitle">Final-year B.Sc. Computer Science (AI)<br>DRBCCC Hindu College, Pattabiram, Chennai</div>
+        <div class="contacts">
+          <span>📍 Pattabiram, Chennai – 600072</span>
+          <span>📞 <a href="tel:+919042751686">+91 90427 51686</a></span>
+          <span>📧 <a href="mailto:nareshkumarbs142006@gmail.com">nareshkumarbs142006@gmail.com</a></span>
+          <span>🔗 <a href="https://github.com/NARESHkumar145" target="_blank">GitHub</a></span>
+          <span>🔗 <a href="https://linkedin.com/in/naresh-kumar-b-s-undefined-54859a2a9" target="_blank">LinkedIn</a></span>
         </div>
-      </section>
-  
-      <section id="resume">
-        <div class="resume">
-            <h2>Resume</h2>
-            <a href="naresh.pdf">download resume</a>
+      </div>
+    </div>
+
+    <!-- Skills and Popup Button Row -->
+    <div class="section">
+      <button class="popup-btn" onclick="openModal('techSkillsModal')">Technical Skills</button>
+      <button class="popup-btn" onclick="openModal('softSkillsModal')">Soft Skills</button>
+      <button class="popup-btn" onclick="openModal('projectsModal')">Projects</button>
+      <button class="popup-btn" onclick="openModal('certificationsModal')">Certifications</button>
+      <button class="popup-btn" onclick="openModal('achievementsModal')">Achievements</button>
+    </div>
+    <!-- Technical Skills Modal -->
+    <div class="modal" id="techSkillsModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('techSkillsModal')">&times;</span>
+        <h3>Technical Skills</h3>
+        <ul class="skills-list">
+          <li class="skill-pill">Python</li>
+          <li class="skill-pill">Java</li>
+          <li class="skill-pill">C++</li>
+          <li class="skill-pill">HTML</li>
+          <li class="skill-pill">CSS</li>
+          <li class="skill-pill">JavaScript</li>
+          <li class="skill-pill">Frontend Development</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Soft Skills Modal -->
+    <div class="modal" id="softSkillsModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('softSkillsModal')">&times;</span>
+        <h3>Soft Skills</h3>
+        <ul class="skills-list">
+          <li class="skill-pill">Problem Solving</li>
+          <li class="skill-pill">Team Collaboration</li>
+          <li class="skill-pill">Leadership</li>
+          <li class="skill-pill">Time Management</li>
+          <li class="skill-pill">Fast Learning</li>
+          <li class="skill-pill">Communication Skills</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Projects Modal -->
+    <div class="modal" id="projectsModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('projectsModal')">&times;</span>
+        <h3>Projects</h3>
+        <ul class="content-list">
+          <li><span class="badge">•</span>Calculator App – HTML/CSS/JavaScript-based calculator with responsive UI</li>
+          <li><span class="badge">•</span>To-Do List App – JavaScript-powered task manager with basic UI/UX</li>
+          <li><span class="badge">•</span>E-commerce Website – Product listing site with cart and design features</li>
+          <li><span class="badge">•</span>Predictive Analytics Project – Machine learning model using Python &amp; Scikit-learn</li>
+          <li><span class="badge">•</span>Resume Maker (Ongoing) – Mini project using Java, HTML, CSS, and Bootstrap</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Certifications Modal -->
+    <div class="modal" id="certificationsModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('certificationsModal')">&times;</span>
+        <h3>Certifications</h3>
+        <ul class="content-list">
+          <li>Python for Data Science – Coursera (IBM)</li>
+          <li>Machine Learning – Coursera (Andrew Ng)</li>
+          <li>Foundations of UX Design – Coursera (Google)</li>
+          <li>Front End Web Development – Edunet (SkillBuild)</li>
+          <li>Python: Zero to Hero – GUVI</li>
+          <li>Generative AI – GUVI</li>
+          <li>Generative AI: Prompt Engineering Basics – IBM</li>
+          <li>ChatGPT for Everyone – GUVI (with Google)</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Achievements Modal -->
+    <div class="modal" id="achievementsModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('achievementsModal')">&times;</span>
+        <h3>Achievements</h3>
+        <ul class="achievements-list">
+          <li>🏆 1st Place – Inter-College Hackathon, 2024</li>
+          <li>🏆 1st Prize – Startup Idea Competition</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Career Objective -->
+    <div class="section">
+      <div class="section-title">Career Objective</div>
+      <div>
+        As a final-year B.Sc. Computer Science (AI) student, I am seeking an opportunity to begin my professional journey in a reputed organization where I can apply my academic knowledge, gain industry experience, and contribute to meaningful projects while continuing to learn and grow.
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Strengths</div>
+      <div class="strengths">
+        I am a quick learner with a positive attitude and a strong sense of adaptability. I stay self-motivated, work well in teams, and remain committed to completing tasks efficiently and responsibly.
+      </div>
+    </div>
+    <!-- Internship Experience -->
+    <div class="section">
+      <div class="section-title">Internship Experience</div>
+      <div class="timeline">
+        <div class="timeline-entry">
+          <div class="timeline-title">Web Development Intern – InternPe</div>
+          <div class="timeline-period">Remote | 02 June 2025 – 29 June 2025</div>
+          <div class="timeline-details">
+            Built and tested frontend projects using HTML, CSS, and JavaScript<br>
+            Gained hands-on experience in UI development and responsive design<br>
+            Developed: Calculator App, To-Do List App, E-commerce Website
+          </div>
         </div>
-      </section>
-
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact-info">
-            <p>Email: nareshkumarbs142006@gmail.com</p>
-            <p>Phone: 9042751686 </p>
+      </div>
+    </div>
+    <!-- Work Experience -->
+    <div class="section">
+      <div class="section-title">Work Experience</div>
+      <div>Fresher with internship experience in Web Development</div>
+    </div>
+    <!-- Education -->
+    <div class="section">
+      <div class="section-title">Education</div>
+      <div class="timeline">
+        <div class="timeline-entry">
+          <div class="timeline-title">B.Sc. Computer Science (AI) – DRBCCC Hindu College, Pattabiram</div>
+          <div class="timeline-period">Expected Jan 2026</div>
         </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 B.S.Naresh kumar</p>
-    </footer>
-
+        <div class="timeline-entry">
+          <div class="timeline-title">HSC (Computer Science) – Kongu Higher Secondary School, Karur</div>
+          <div class="timeline-period">Completed Jan 2023</div>
+        </div>
+        <div class="timeline-entry">
+          <div class="timeline-title">SSLC – Cheran Matriculation Higher Secondary School, Karur</div>
+          <div class="timeline-period">Completed Jan 2021</div>
+        </div>
+      </div>
+    </div>
+    <!-- Personal Details -->
+    <div class="section">
+      <div class="section-title">Personal Details</div>
+      <table class="personal-table">
+        <tr><td><strong>Nationality:</strong></td><td>Indian</td></tr>
+        <tr><td><strong>Languages:</strong></td><td>Tamil (Native), English (Fluent)</td></tr>
+        <tr><td><strong>Hobbies:</strong></td><td>Listening to music, exploring AI tools, video editing, creative design, and playing chess</td></tr>
+      </table>
+    </div>
+    <!-- Declaration -->
+    <div class="declaration">
+      I hereby declare that all the information provided above is true to the best of my knowledge and belief.
+    </div>
+  </div>
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+    window.onclick = function(event) {
+      [
+        'techSkillsModal',
+        'softSkillsModal',
+        'projectsModal',
+        'certificationsModal',
+        'achievementsModal'
+      ].forEach(function(id){
+        var modal = document.getElementById(id);
+        if (event.target === modal) { modal.style.display = "none"; }
+      });
+    }
+  </script>
 </body>
-</html>
+          </html>
+        
